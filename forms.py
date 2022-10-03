@@ -84,8 +84,8 @@ class VenueForm(Form):
         'address', validators=[DataRequired()]
     )
     phone = StringField(
-        # TODO implement validation logic for state
-        'phone', validators=[DataRequired(), Regexp("^[0-9]*$", message="Phone number")]
+        # TODO implement validation logic for state "^[0-9]{11}$"
+        'phone'
     )
     image_link = StringField(
         'image_link'
@@ -194,8 +194,8 @@ class ArtistForm(Form):
         ]
     )
     phone = StringField(
-        'phone', validators=[DataRequired(), 
-                    Regexp(r'[\d][\d][\d]-[\d][\d][\d]-[\d][\d][\d][\d]')]
+        # TODO implement validation
+        'phone', validators=[DataRequired(), Regexp("^[0-9]{11}$", message="Field only accept digit")]
     )
     image_link = StringField(
         'image_link'

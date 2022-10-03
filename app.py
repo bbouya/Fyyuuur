@@ -275,6 +275,7 @@ def search_artists():
          flash('Please specify the name of the artist in your searchs.')
          return redirect(url_for('artists'))
 
+
 def searchResponseBody(search_count, search_result):
   response={
     'count': search_count,
@@ -390,6 +391,8 @@ def edit_artist_submission(artist_id):
 
     finally: 
       db.session.close()
+  else: 
+      flash('Opps form error')
 
   return redirect(url_for('show_artist', artist_id=artist_id))
 
@@ -481,6 +484,8 @@ def create_artist_submission():
       flash('An error occurred. Artist ' + form.name.data + ' could not be listed.')
     finally:
       db.session.close()
+  else :
+    flash('form problems')
 
   return render_template('pages/home.html')
 
@@ -533,6 +538,8 @@ def create_show_submission():
     except:
       db.session.rollback()
       flash('An error occured! Show could not be listed!')
+  else:
+    flash('form problem')
 
   return render_template('pages/home.html')
 
